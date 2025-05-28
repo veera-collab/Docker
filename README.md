@@ -314,6 +314,33 @@ except mysql.connector.Error as err:
 ```
 
 ---
+## 📦 Sample `pyton-app-deployment.yaml`
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-app
+  template:
+    metadata:
+      labels:
+        app: python-app
+    spec:
+      containers:
+      - name: python-app
+        image: python-mysql-app
+        env:
+        - name: MYSQL_HOST
+          value: mysql
+        - name: MYSQL_USER
+          value: testuser
+        - name: MYSQL_PASSWORD
+          value: testpassword
+        - name: MYSQL_DATABASE
+          value: testdb
 
 ## 📦 Sample `mysql-deployment.yaml`
 
